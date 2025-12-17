@@ -4,15 +4,15 @@ var map = new ol.Map({
     renderer: 'canvas',
     layers: layersList,
     view: new ol.View({
-         maxZoom: 20, minZoom: 5, projection: new ol.proj.Projection({
+         maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
             code: 'EPSG:2157',
-            //extent: [417494.774180, 516343.838917, 766702.953424, 965648.241259],
+            //extent: [417471.514999, 516343.838917, 766702.953424, 965648.241259],
             units: 'm'})
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([433685.489118, 675821.941219, 943147.907464, 994235.952685], map.getSize());
+map.getView().fit([310992.282152, 514703.136204, 1030711.002152, 964527.336204], map.getSize());
 
 //full zooms only
 map.getView().setProperties({constrainResolution: true});
@@ -151,7 +151,7 @@ var featureOverlay = new ol.layer.Vector({
 });
 
 var doHighlight = true;
-var doHover = true;
+var doHover = false;
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
@@ -1145,18 +1145,6 @@ let measuring = false;
 
 //layer search
 
-var searchLayer = new SearchLayer({
-    layer: lyr_DecarbonisationZonesV3_1,
-    colName: 'Local Authority',
-    zoom: 10,
-    collapsed: true,
-    map: map,
-    maxResults: 10,
-});
-map.addControl(searchLayer);
-document.getElementsByClassName('search-layer')[0].getElementsByTagName('button')[0].className += ' fa fa-binoculars';
-document.getElementsByClassName('search-layer-input-search')[0].placeholder = 'Search feature ...';
-    
 
 //scalebar
 
